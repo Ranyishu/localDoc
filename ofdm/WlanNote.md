@@ -1,5 +1,10 @@
 ## introduction
 
+### specification
+
+[WIFI-DOCS/IEEE-802.11 at master · WHJWNAVY/WIFI-DOCS (github.com)](https://github.com/WHJWNAVY/WIFI-DOCS/tree/master/IEEE-802.11)
+
+
 [802.11有多个子标准，如802.11a/b/g/n/ac/ax/be等，每个子标准使用不同的物理层技术，如FHSS、DSSS、OFDM和MIMO等](https://www.bing.com/ck/a?!&&p=ab90d26e2a2ba9c7JmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1NQ&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzEwMDAxMTMzMTQvYmQ5NTU3YWQ&ntb=1)[3](https://www.bing.com/ck/a?!&&p=384c20c70d65e8abJmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1Ng&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzEwMDAxMTMzMTQvYmQ5NTU3YWQ&ntb=1)[2](https://www.bing.com/ck/a?!&&p=55db694531864049JmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1Nw&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzExMDAwMzM5NzYvMzU4MjUyMTQ&ntb=1)。[802.11的演进带来了数据传输速率的提升](https://www.bing.com/ck/a?!&&p=10b74497828f6804JmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1OA&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzEwMDAxMTMzMTQvYmQ5NTU3YWQ&ntb=1)[3](https://www.bing.com/ck/a?!&&p=6a44c1decd722827JmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1OQ&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzEwMDAxMTMzMTQvYmQ5NTU3YWQ&ntb=1)。
 
 ### 80211 a frame format
@@ -509,3 +514,8 @@ const int HELTF40M_x1_RuSC
 function params = heRateDependentParameters(ruSize,mcs,NSS,DCM)
 function params = heRateDependentParameters(ruSize,mcs,NSS,DCM)
 ```
+
+
+## some code
+
+[hui811116/gr-wifi-dsss: An IEEE 802.11b physical layer prototype on Gnuradio &amp; USRP (github.com)](https://github.com/hui811116/gr-wifi-dsss)
