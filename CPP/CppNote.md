@@ -50,6 +50,211 @@ dll 分三个模块；
 
 [为什么动态链接.dll和.lib都需要(详解静、动态链接库)_windows的动态链接库为什么多个lib文件-CSDN博客](https://blog.csdn.net/weixin_43744293/article/details/117283686)
 
+
+## API 设计
+
+第一种是PIMP方法，即Pointer to Implementation，在接口类成员中包含一个指向实现类的指针，这样可以最大限度的做到接口和实现分离的原则。
+
+[PIMPL：这样写隐藏接口的实现细节 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/264820635)
+
+第二种方法叫Object-Interface方法，它的思想是采用C++的动态功能，实现类继承接口类，功能接口函数定义成虚函数。
+
+[如何设计C++接口类 - 简书 (jianshu.com)](https://www.jianshu.com/p/2f870b7a3434)
+
+2.2 隐藏实现细节：
+
+创建API的主要原因是隐藏所有的实现细节，以免将来修改API对已有客户造成影响。任何内部实现细节(那些很可能变更的部分)必须对该API的客户隐藏。主要有两种技巧可以达到此目标：物理隐藏和逻辑隐藏。物理隐藏表示只是不让用户获得私有源代码。逻辑隐藏则需要使用语言特性限制用户访问API的某些元素。
+
+物理隐藏：在C和C++中，声明和定义是有特定含义的精确术语。 声明只是告诉编译器一个名字以及它的类型，并不为其分配任何内存
+
+。与之相对，定义提供了类型结构体的细节，如果是变量则为其分配内存。声明告诉编译器某个标识符的名称及类型。定义提供该标识符的完整细节，即它是一个函数体还是一块内存区域。
+
+物理隐藏表示将内部细节 (.cpp) 与公有接口(.h) 分离，存储在不同的文件中 。
+
+逻辑隐藏：封装提供了限制访问对象成员的机制：public、protected、private。封装是将API的公有接口与其底层实现分离的过程。
+
+逻辑隐藏指的是使用 C++ 语言中受保护的和私有的访问控制特性从而限制访问内部细节
+
+。类的数据成员应该始终声明为私有的，而不是公有的或受保护的。
+
+永远不要返回私有数据成员的非const指针或引用，这会破坏封装性。
+
+强烈建议在API中采用Pimpl惯用法，这样就可以将所有实现细节完全和公有头文件分开。 Pimpl
+
+惯用法：它将所有的私有数据成员隔离到一个.cpp 文件中独立实现的类或结构体中。之后，.h
+
+文件仅需要包含指向该类实例的不透明指针(opaque pointer) 即可 。
+
+将私有功能声明为.cpp文件中的静态函数，而不要将其作为私有方法暴露在公开的头文件中。(更好的做法是使用Pimpl惯用法。)
+
+隐藏实现类：除了隐藏类的内部方法和变量之外，还应该尽力隐藏那些纯粹是实现细节的类。实际上，一些类仅用于实现，因此应该将其从API的公有接口中移除。
+
+[C++ API设计-CSDN博客](https://blog.csdn.net/cuijian2B/article/details/122133521)
+
+## 回调函数
+
+
+C 语言回调函数详解[](https://www.runoob.com/w3cnote_genre/code)
+
+1. 什么是回调函数？
+
+百度百科的解析我觉得还算不错（虽然经常吐槽百度搜索...）：回调函数就是一个通过函数指针调用的函数。如果你把函数的指针（地址）作为参数传递给另一个函数，当这个指针被用来调用其所指向的函数时，我们就说这是回调函数。
+
+下面先说说我的看法。我们可以先在字面上先做个分解，对于"回调函数"，中文其实可以理解为这么两种意思：1) 被回调的函数；2) 回头执行调用动作的函数。那这个回头调用又是什么鬼？
+
+先来看看来自维基百科的对回调（Callback）的解析：In computer programming, a callback is any executable code that is passed as an argument to other code, which is expected to call back (execute) the argument at a given time. This execution may be immediate as in a synchronous callback, or it might happen at a later time as in an asynchronous callback. 也就是说，把一段可执行的代码像参数传递那样传给其他代码，而这段代码会在某个时刻被调用执行，这就叫做回调。如果代码立即被执行就称为同步回调，如果在之后晚点的某个时间再执行，则称之为异步回调。关于同步和异步，这里不作讨论，请查阅相关资料。
+
+再来看看来自Stack Overflow某位大神简洁明了的表述：A "callback" is any function that is called by another function which takes the first function as a parameter。 也就是说，函数 F1 调用函数 F2 的时候，函数 F1 通过参数给 函数 F2 传递了另外一个函数 F3 的指针，在函数 F2 执行的过程中，函数F2 调用了函数 F3，这个动作就叫做回调（Callback），而先被当做指针传入、后面又被回调的函数 F3 就是回调函数。到此应该明白回调函数的定义了吧？
+
+2. 为什么要使用回调函数？
+
+很多朋友可能会想，为什么不像普通函数调用那样，在回调的地方直接写函数的名字呢？这样不也可以吗？为什么非得用回调函数呢？有这个想法很好，因为在网上看到解析回调函数的很多例子，其实完全可以用普通函数调用来实现的。要回答这个问题，我们先来了解一下回到函数的好处和作用，那就是解耦，对，就是这么简单的答案，就是因为这个特点，普通函数代替不了回调函数。所以，在我眼里，这才是回调函数最大的特点。来看看维基百科上面我觉得画得很好的一张图片。
+
+
+下面以一段不完整的 C 语言代码来呈现上图的意思：
+
+```cpp
+#include
+#include // 包含Library Function所在读得Software library库的头文件int Callback() // Callback Function
+{
+    // TODO
+    return 0;
+}
+int main() // Main program
+{
+    // TODO
+    Library(Callback);
+    // TODO
+    return 0;
+}
+```
+
+
+乍一看，回调似乎只是函数间的调用，和普通函数调用没啥区别，但仔细一看，可以发现两者之间的一个关键的不同：在回调中，主程序把回调函数像参数一样传入库函数。这样一来，只要我们改变传进库函数的参数，就可以实现不同的功能，这样有没有觉得很灵活？并且丝毫不需要修改库函数的实现，这就是解耦。再仔细看看，主函数和回调函数是在同一层的，而库函数在另外一层，想一想，如果库函数对我们不可见，我们修改不了库函数的实现，也就是说不能通过修改库函数让库函数调用普通函数那样实现，那我们就只能通过传入不同的回调函数了，这也就是在日常工作中常见的情况。现在再把main()、Library()和Callback()函数套回前面 F1、F2和F3函数里面，是不是就更明白了？
+
+明白了回调函数的特点，是不是也可以大概知道它应该在什么情况下使用了？没错，你可以在很多地方使用回调函数来代替普通的函数调用，但是在我看来，如果需要降低耦合度的时候，更应该使用回调函数。
+
+3. 怎么使用回调函数？
+
+知道了什么是回调函数，了解了回调函数的特点，那么应该怎么使用回调函数？下面来看一段简单的可以执行的同步回调函数代码。
+
+实例
+
+```cpp
+#include<stdio.h>
+int Callback_1() // Callback Function 1
+{
+    printf("Hello, this is Callback_1 ");
+    return 0;
+}
+int Callback_2() // Callback Function 2
+{
+    printf("Hello, this is Callback_2 ");
+    return 0;
+}
+int Callback_3() // Callback Function 3
+{
+    printf("Hello, this is Callback_3 ");
+    return 0;
+}
+int Handle(int (*Callback)())
+{
+    printf("Entering Handle Function. ");
+    Callback();
+    printf("Leaving Handle Function. ");
+}
+int main()
+{
+    printf("Entering Main Function. ");
+    Handle(Callback_1);
+    Handle(Callback_2);
+    Handle(Callback_3);
+    printf("Leaving Main Function. ");
+    return 0;
+}
+```
+
+
+运行结果：
+
+```
+Entering Main Function.
+Entering Handle Function.
+Hello, this is Callback_1
+Leaving Handle Function.
+Entering Handle Function.
+Hello, this is Callback_2
+Leaving Handle Function.
+Entering Handle Function.
+Hello, this is Callback_3
+Leaving Handle Function.
+Leaving Main Function.
+```
+
+可以看到，Handle()函数里面的参数是一个指针，在main()函数里调用Handle()函数的时候，给它传入了函数Callback_1()/Callback_2()/Callback_3()的函数名，这时候的函数名就是对应函数的指针，也就是说，回调函数其实就是函数指针的一种用法。现在再读一遍这句话：A "callback" is any function that is called by another function which takes the first function as a parameter，是不是就更明白了呢？
+
+4. 怎么使用带参数的回调函数？
+
+眼尖的朋友可能发现了，前面的例子里面回调函数是没有参数的，那么我们能不能回调那些带参数的函数呢？答案是肯定的。那么怎么调用呢？我们稍微修改一下上面的例子就可以了：
+
+实例
+
+```cpp
+#include <stdio.h>
+int Callback_1(int x) // Callback Function 1
+{
+    printf("Hello, this is Callback_1: x = %d ", x);
+    return 0;
+}int Callback_2(int x) // Callback Function 2
+{
+    printf("Hello, this is Callback_2: x = %d ", x);
+    return 0;
+}int Callback_3(int x) // Callback Function 3
+{
+    printf("Hello, this is Callback_3: x = %d ", x);
+    return 0;
+}int Handle(int y, int (*Callback)(int))
+{
+    printf("Entering Handle Function. ");
+    Callback(y);
+    printf("Leaving Handle Function. ");
+}int main()
+{
+    int a = 2;
+    int b = 4;
+    int c = 6;
+    printf("Entering Main Function. ");
+    Handle(a, Callback_1);
+    Handle(b, Callback_2);
+    Handle(c, Callback_3);
+    printf("Leaving Main Function. ");
+    return 0;
+}
+```
+
+
+运行结果：
+
+```
+Entering Main Function.
+Entering Handle Function.
+Hello, this is Callback_1: x = 2
+Leaving Handle Function.
+Entering Handle Function.
+Hello, this is Callback_2: x = 4
+Leaving Handle Function.
+Entering Handle Function.
+Hello, this is Callback_3: x = 6
+Leaving Handle Function.
+Leaving Main Function.
+```
+
+可以看到，并不是直接把int Handle(int (*Callback)()) 改成 int Handle(int (*Callback)(int)) 就可以的，而是通过另外增加一个参数来保存回调函数的参数值，像这里 int Handle(int y, int (*Callback)(int)) 的参数 y。同理，可以使用多个参数的回调函数。
+
+原文地址：[https://www.cnblogs.com/jiangzhaowei/p/9129105.html](https://www.cnblogs.com/jiangzhaowei/p/9129105.html)
+
+[https://www.runoob.com/w3cnote/c-callback-function.html](https://www.runoob.com/w3cnote/c-callback-function.html)
+
 ## Design pattern 设计模式
 
 当涉及到 C++ 中的设计模式时，有很多种不同的设计模式可以考虑。以下是一些常见的设计模式列表，它们可以帮助你更好地组织和理解代码：

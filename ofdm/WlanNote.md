@@ -21,11 +21,12 @@
 
 ### 80211 ac
 
+<p align="center">
 ![1718677677240](image/Wlan/1718677677240.png)
-
+</p>
 ### 80211 ax
 
-![1718677969748](https://file+.vscode-resource.vscode-cdn.net/d%3A/LocalStorePad/vsDoc/image/Wlan/1718677969748.png)
+![1718677969748](image/Wlan/1718677969748.png)
 
 [Wi-Fi 6 (802.11ax) Design Tips: How to Overcome the Biggest RF Challenges - Qorvo](https://www.qorvo.com/design-hub/blog/designing-for-80211ax-wifi-common-challenges-and-tips-to-overcome-them)
 
@@ -58,6 +59,67 @@ Let us understand 802.11ax frame. Its structure is similar to 802.11n and 802.11
 ### all used structure
 
 ![1718678174182](image/Wlan/1718678174182.png)
+
+### Matlab
+
+[
+    802.11ax (Wi-Fi 6) - MATLAB&amp; Simulink (mathworks.com)](https://www.mathworks.com/help/wlan/802.11ax-reception.html?s_tid=CRUX_lftnav)
+
+### OFDMA
+
+802.11ax standard further assigns specific sets of subcarriers to individual users. That is, it divides the existing 802.11 channels (20, 40, 80 and 160 MHz wide) into smaller subchannels with a predefined number of subcarriers. The 802.11ax standard calls the smallest subchannel a resource unit (RU), with a minimum size of 26 subcarriers.
+
+一个RU 最小是26 tone，20MHz 分成9 RU， 9*26=234 < 256；
+
+![1718870986311](image/WlanNote/1718870986311.png)
+
+***Figure 7*** illustrates how an 802.11ax system may multiplex the channel using different RU sizes. Note that the smallest division of the channel accommodates up to nine users for every 20 MHz of bandwidth.^2^
+
+## subcarrier Size
+
+With OFDMA in 802.11ax, the size of the subcarriers has been divided by 4. Going from 312.5KHz wide with OFDM to 78.125KHz wide.
+
+The symbol duration has been increased by 4 times in the meantime. Going from 3.2 microseconds with OFDM to 12.8 microseconds.
+
+![1719293293797](image/WlanNote/1719293293797.png)
+
+### Advantages of having more subcarriers
+
+![1719293383724](image/WlanNote/1719293383724.png)
+
+1. Allow OFDMA to extend to small sub-channels. Each sub-channel requires at least one (usually two) pilot subcarriers, and with a 2 MHz minimum sub-channel size, a smaller subcarrier spacing loses a much smaller percentage of the overall bandwidth to pilots.
+2. The number of guard and null subcarriers across a channel can be reduced as a percentage of the number of usable subcarriers, again increasing the effective data rate in a given channel. The figures above show a ~10% increase in usable subcarriers compared to 802.11ac, after allowing for the 4x factor. Example: OFDM: 64 subcarriers, 12 GuardNull subcarriers = 18.75%, OFDMA: 256 subcarriers. 22 GuardNull subcarriers = 8.5%.
+3. The longer OFDM symbol allows for an increase in the cyclic prefix length without sacrificing spectral efficiency, which in turn enables increased immunity to long delay spreads, especially in outdoor conditions. The cyclic prefix can be reduced to a smaller percentage of the symbol time, increasing spectral efficiency even while more robust to multipath conditions. And it reduces the jitter-sensitivity of uplink multi-user modes.
+
+The smallest sub-channel is composed of 26 subcarriers. Type of subcarriers:
+
+* Data subcarriers
+* Pilot subcarriers
+* DC subcarriers
+* Guard subcarriers
+* Null subcarriers
+
+  **Pilot**
+
+A 26-tone RU consists of 24 **data subcarriers** and 2  **pilot subcarriers** .
+
+A 52-tone RU consists of 48 data subcarriers and 4 pilot subcarriers.
+
+A 106-tone RU consists of 102 data subcarriers and 4 pilot subcarriers.
+
+A 242-tone RU consists of 234 data subcarriers and 8 pilot subcarriers.
+
+A 484-tone RU consists of 468 data subcarriers and 16 pilot subcarriers.
+
+A 996-tone RU consists of 980 data subcarriers and 16 pilot subcarriers.
+
+**DC (Direct Current)** subcarriers are used for the subcarriers located in the center of the channel. Depending on the channel width and the number of tone used, the number of DC subcarriers can vary (Ex: 3 or 7 for a 20MHz wide channel). Most of the time it will be 7 for the 20MHz and 80MHz wide channels and 5 for the 40MHz wide channels.
+
+A 20MHz wide channels has 11 guard interval: the first 6 and the last 5 of the channel.
+
+![1719293602739](image/WlanNote/1719293602739.png)
+
+[CTS 162: 802.11ax OFDMA Subcarriers (cleartosend.net)](https://www.cleartosend.net/802-11ax-ofdma-subcarriers/)
 
 ## GI
 
@@ -151,7 +213,199 @@ The specifications for Guard Intervals can typically be found in the PHY (Physic
 * 802.11ac: Section 22.3 (VHT PHY specification)
 * 802.11ax: Section 27.3 (HE PHY specification)
 
+## RU Type -26 Tone
+
+DL和UL上下行传输定义的RU类型包括：RU26，RU52，RU106，RU242，RU484，RU996，RU2X996。对于20MHz、40MHz、80MHz、160MHz、80+80MHz的HE PPDU，最大RU数如表27-6所示。
+
+![1718680805296](image/Wlan/1718680805296.png)
+
+*Table* shows the number of users able to get frequency-multiplexed access when the 802.11ax AP and STAs coordinate for MU-OFDMA operation.xz
+
+![1718870555518](image/WlanNote/1718870555518.png)
+
+使用[OFDMA](https://so.csdn.net/so/search?q=OFDMA&spm=1001.2101.3001.7020)传输的HE MU PPDU可以混合携带RU26，RU52，RU106，RU242，RU484，RU996。
+
+num RU==1的时候， 表示用于 HE_SU PPDU;
+
+num RU>1的时候， 表示用于 HE_MU PPDU;
+
+什么是 HE_TB PPDU？？
+
+![1719293913020](image/WlanNote/1719293913020.png)
+
+## RU Pilot
+
+一个RU26由24个data子载波和2个pilot子载波组成。RU26的pilot位置定义参见协议27.3.2.4。RU26的位置是固定的，如表27-7、表27-8、表27-9所示。
+
+![1718867046453](image/WlanNote/1718867046453.png)
+
+*【注2】RU5是中心26-tone RU*
+
+##### DC and guard subcarriers
+
+![1718681011807](image/Wlan/1718681011807.png)
+
+##### NULL Subcarrier
+
+![1718681027133](image/Wlan/1718681027133.png)
+
+![1718867208078](image/WlanNote/1718867208078.png)
+
+![1718867217730](image/WlanNote/1718867217730.png)
+
+RU106由102个data子载波和4个pilot子载波组成。RU106的pilot位置参见协议27.3.2.4。对于使用OFDMA传输的20MHz、40MHz和80MHz HE_MU PPDU或HE_TB PPDU，RU106的位置是固定的，如表27-7、表27-8、表27-9所定义，如图27-5、图27-6、图27-7所示。使用OFDMA传输的160MHz、80+80MHz HE_MU PPDU或HE_TB PPDU的主80MHz和辅80MHz信道的结构，和使用OFDMA发送的80MHz HE_MU PPDU或HE_TB PPDU的结构相同。
+
+RU242由234个data子载波和8个pilot子载波组成。RU242的pilot位置参见协议27.3.2.4。对于20MHz、40MHz和80MHz HE PPDU，RU242的位置是固定的，如表27-7、表27-8、表27-9所定义，如图27-5、图27-6、图27-7所示。160MHz、80+80MHz HE PPDU的主80MHz和辅80MHz信道的结构，和80MHz HE PPDU的结构相同。
+
+RU484由468个data子载波和16个pilot子载波组成。RU484的pilot位置参见协议27.3.2.4。对于40MHz和80MHz HE PPDU，RU484的位置是固定的，如表27-8、表27-9所定义，如图27-6、图27-7所示。160MHz、80+80MHz HE PPDU的主80MHz和辅80MHz信道的结构，和80MHz HE PPDU的结构相同。
+
+RU996由980个data子载波和16个pilot子载波组成。RU996的pilot位置参见协议27.3.2.4。RU996的位置是固定的，分别位于160MHz和80+80MHz HE PPDU半带宽的子载波[-1012:–515, –509:–12]和[12:509, 515:1012]上。
+
+RU2X996由2个RU996组成，160MHz和80+80MHz HE PPDU的两个80MHz信道中各有一个。
+
+携带一个或多个少于RU242的RU的20MHz HE_MU PPDU和HE_TB PPDU有7个DC子载波，位于[–3:3]。
+携带RU242的20MHz HE_SU PPDU、HE_MU PPDU和HE_TB PPDU有3个DC子载波，位于[–1:1]。
+40MHz HE PPDU有5个DC子载波，位于[–2:2]。
+携带一个或多个少于RU996的RU的80MHz HE_MU PPDU和HE_TB PPDU有7个DC子载波，位于[–3:3]。
+携带RU996的80MHz HE_SU PPDU、HE_MU PPDU和HE_TB PPDU有5个DC子载波，位于[–2:2]。
+80MHz HE PPDU中使用的结构，同样用于160MHz和80+80MHz HE PPDU的主80MHz和辅80MHz信道，DC子载波位于[–11:11]。
+
+non-OFDMA 80MHz HE PPDU的data和pilot子载波索引和RU996是一样的。
+
+对于使用OFDMA传输的20MHz、40MHz和80MHz的HE_MU PPDU或HE_TB PPDU，RU26的位置如图27-5、图27-6、图27-7所示。使用OFDMA传输的160MHz、80+80MHz HE_MU PPDU或HE_TB PPDU的主80MHz和辅80MHz信道的结构，和使用OFDMA发送的80MHz HE_MU PPDU或HE_TB PPDU的结构相同。
+
+RU52由48个data子载波和4个pilot子载波组成。RU52的pilot位置参见协议27.3.2.4。对于使用OFDMA传输的20MHz、40MHz和80MHz HE_MU PPDU或HE_TB PPDU，RU52的位置是固定的，如表27-7、表27-8、表27-9所定义，如图27-5、图27-6和图27-7所示。使用OFDMA传输的160MHz、80+80MHz HE_MU PPDU或HE_TB PPDU的主80MHz和辅80MHz信道的结构，和使用OFDMA发送的80MHz HE_MU PPDU或HE_TB PPDU的结构相同。
+
+20MHz HE PPDU有11个guard子载波：6个低频率子载波[-128:–123]和5个高频率子载波[123:127]，如图27-5所示。
+40MHz HE PPDU有23个guard子载波：12个低频率子载波[-256:-245]和11个高频率子载波[245:255]，如图27-6所示。
+80MHz HE PPDU有23个guard子载波：12个低频率子载波[-512:–501]和11个最高频率子载波[501:511]，如图27-7所示。
+
+[802.11ax-2021协议学习__$27-HE-PHY__$27.3.2-Subcarrier-and-resource-allocation__1_ppdu支持3种he-ltf类型:1x he-ltf、2x he-ltf和4x he-ltf-CSDN博客](https://blog.csdn.net/weixin_42997255/article/details/132088032?spm=1001.2014.3001.5502)
+
+### Pilot
+
+##### 27.3.2.4 Subcarriers
+
+![1718680826613](image/Wlan/1718680826613.png)
+
+在HE PPDU的HE调制字段（见27.3.10）内，pilot子载波存在于Data字段中，并且可能存在于HE-LTF字段中（见27.3.11.10）。Data字段OFDM symbols的pilot子信道索引在27.3.12.13中定义。
+
+HE PPDU的HE-LTF字段中使用三种HE-LTF类型之一：1x HE-LTF、2x HE-LTF、4x HE-LTF（见27.3.11.10）。
+如果HE PPDU的HE-LTF字段中存在pilot子载波，则对于4x HE-LTF和2x HE-LTF，HE-LTF字段中的pilot子载波位置与Data字段中的pilot子载波位置相同；而对于1x HE-LTF，HE-LTF字段中的pilot子载波位置是Data字段中4的倍数的pilot子载波位置。
+
+##### 27.3.12.13 Pilot position
+
+![1718680838442](image/Wlan/1718680838442.png)
+
+##### pilot sequence
+
+![1718680935123](image/Wlan/1718680935123.png)
+
+## SIG Info
+
+The **OFDM SIG Info** summary trace shows the following SIG field information.
+
+* [HE-SIG-A](https://helpfiles.keysight.com/csg/89600B/Webhelp/Subsystems/wlan-mimo/content/trc_ofdm_ht-sig_info.htm#HE-SIG-A) (High Efficiency Signal) - HE-SIG-A for 802.11ax
+* [EHT-U-SIG](https://helpfiles.keysight.com/csg/89600B/Webhelp/Subsystems/wlan-mimo/content/trc_ofdm_ht-sig_info.htm#EHT-U-SIG) (Extremely High Throughput Universal Signal) - EHT-U-SIG for 802.11be
+* [EHT-SIG](https://helpfiles.keysight.com/csg/89600B/Webhelp/Subsystems/wlan-mimo/content/trc_ofdm_ht-sig_info.htm#EHT-SIG) (Extremely High Throughput Signal) - Common section of EHT-SIG content channel 1 and content channel 2 (When applicable) for 802.11be
+* [VHT-SIG](https://helpfiles.keysight.com/csg/89600B/Webhelp/Subsystems/wlan-mimo/content/trc_ofdm_ht-sig_info.htm#VHT-SIG) (Very High Throughput Signal) - [VHT](javascript:void(0))-SIG-A1/VHT-SIG-A2 and VHT-SIG-B for 802.11ac
+* [HT-SIG](https://helpfiles.keysight.com/csg/89600B/Webhelp/Subsystems/wlan-mimo/content/trc_ofdm_ht-sig_info.htm#HT-SIG) (High Throughput Signal) - [HT-SIG](javascript:void(0)) for 802.11n
+* [L-SIG](https://helpfiles.keysight.com/csg/89600B/Webhelp/Subsystems/wlan-mimo/content/trc_ofdm_ht-sig_info.htm#L-SIG) (Legacy Signal) - [L-SIG]() field information for applicable 802.11n/ac signals
+* 
+
+  [OFDM SIG Info (802.11n/ac/ax/be) (keysight.com)](https://helpfiles.keysight.com/csg/89600B/Webhelp/Subsystems/wlan-mimo/content/trc_ofdm_ht-sig_info.htm)
+
+### 27.3.11.8-HE-SIG-B
+
+**27.3.11.8.1 General**
+HE-SIG-B字段提供必要的信令，包括OFDMA和DL MU-MIMO资源分配信息，以便允许STA查找要在PPDU的HE modulated字段中使用的对应资源。HE-SIG-B字段的整数字段以无符号二进制格式传输，首先是LSB，其中LSB位于编号最低的位置。
+
+动态分割（Dynamic split）定义为根据每个HE-SIG-B content channel中的Common字段在HE-SIG-B content channel上分割User字段，并且在HE-SIG-A中的HE-SIG-B Compression字段被设置为0时使用。
+
+公平分割（Equitable split）被定义为当HE-SIG-A中的HE-SIG-B Compression字段被设置为1时，所使用的HE-SIG-B content channels上的User字段的分割。
+
+**27.3.11.8.2 HE-SIG-B content channels**
+20MHz HE MU PPDU的HE-SIG-B字段包含1个HE-SIG-B content channel。40MHz或更宽的HE MU PPDU的HE-SIG-B字段包含2个HE-SIG-B content channel。
+
+HE-SIG-B content channel格式如图27-26所示，由一个Common字段（如果存在）和一个User Specific字段组成。
+
+如果HE MU PPDU的HE-SIG-A字段中的HE-SIG-B Compression字段是1（指示全带宽MU-MIMO传输），则不存在Common字段，即HE-SIG-B content channel仅由User Specific字段组成。如果HE_MU PPDU的HE-SIG-A字段中的HE-SIG-B Compression字段为0，则Common字段存在于HE-SIG-B content channel中。
+
+HE-SIG-B content channel的Common字段包含RU资源分配相关信息，例如用于PPDU的HE modulated字段中的RU分配、MU-MIMO的RU分配，以及MU-MIMO分配中的用户数量。Common字段的定义参见27.3.11.8.3。
+
+HE-SIG-B content channel中的User Specific字段包含PPDU中的所有用户关于如何解码其有效载荷的信息。如图27-26所示，User Specific由User Block字段构成，这些字段又包含User字段。User Specific字段的定义参见27.3.11.8.4。
+
+HE-SIG-B内容示例参见协议附录Z。
+
+27.3.11.8.3 Common field
+如果HE MU PPDU的HE-SIG-A字段中的HE-SIG-B Compression字段为1，则本章节不适用。
+
+Common字段格式参见表27-24。
+
+RU996有2个HE-SIG-B content channel，每个HE-SIG-B content channel有2个连续RU Allocation子字段，分别被标记为第一RU Allocation子字段和第二RU Allocation子字段。RU484有2个HE-SIG-B content channel，每个HE-SIG-B content channel有1个RU Allocation子字段。其他更小的RU仅有1个HE-SIG-B content channel，且其中仅有1个RU Allocation子字段。如果160MHz或80+80MHz PPDU中存在Common字段，则不允许使用RU2×996，并且不能由RU Allocation子字段指示。
+
+Table 27-24 — Common field
+
+![1718869167906](image/WlanNote/1718869167906.png)
+
+[802.11ax-2021协议学习__$27-HE-PHY__$27.3.11-HE-preamble__$27.3.11.8-HE-SIG-B_802.11 ax bcc code-CSDN博客](https://blog.csdn.net/weixin_42997255/article/details/132348522?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522171886771016800182733433%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&request_id=171886771016800182733433&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_ecpm_v1~rank_v31_ecpm-3-132348522-null-null.nonecase&utm_term=ax&spm=1018.2226.3001.4450)
+
+### 27.5-Parameters-for-HE-MCSs
+
+**27.3.7 Modulation and coding scheme (HE-MCSs)**
+
+HE-MCS是PPDU数据字段中使用的调制（modulation）和编码（coding）的紧凑表示。对于HE SU PPDU和HE ER SU PPDU，携带于HE-SIG-A字段中。对于HE MU PPDU，在HE-SIG-B字段的User Specific字段中按用户携带。对于HE-TB PPDU，携带于请求HE-TB PPDU的Trigger帧的User Info字段中。
+
+全套HE MCS的速率相关参数如表27-55至表27-110（27.5）所示。这些表给出了索引为0至11的HE MCS的速率相关参数；空间流的数量从1到8；RU选项包括RU26、RU52、RU106、RU242、RU484和RU996；带宽选项包括20MHz、40MHz、80MHz、160MHz和80+80MHz。
+
+HE ER SU PPDU仅支持单个RU242或RU106。具有RU242的HE ER SU PPDU应仅使用<HE-MCS，NSS>元组<HE-MCS 0，1>，<HE-MCS 1，1>和<HE-MCS 2，1>进行传输。具有RU106的HE ER SU PPDU应仅使用<HE-MCS，NSS> 元组<HE-MCS 0, 1>传输。20MHz tone plan内的106-tone RU位置被固定为频率更高的位置。
+
+DCM是用于HE PPDU中的HE-SIG-B字段和Data字段的可选调制方案。HE-SIG-A字段中指示了在HE MU PPDU中HE-SIG-B字段是否使用DCM。对于HE-SIG-B字段，DCM仅适用于HE-SIG-B-MCS 0、1、3和4。HE-SIG-A字段中指示了在HE SU PPDU和HE ER SU PPDU的Data字段上是否使用DCM。HE-SIG-B字段中指示了在HE MU PPDU的Data字段中是否使用DCM。对于Data字段，DCM仅适用于HE MCS 0、1、3和4。
+
+pre-HE modulated字段（见图27-23）不在20MHz子信道中传输，在该子信道中，preamble被punctured，如27.3.11.3所述。
+
+**27.3.8 HE-SIG-B modulation and coding schemes (HE-SIG-B-MCSs)**
+
+HE-SIG-B-MCS是用于HE MU PPDU的HE-SIG-B字段的调制（modulation）和编码（coding）的紧凑表示。HE-SIG-B调制编码方案被携带在HE MU PPDU中的HE-SIG-A字段的HE-SIG-B-MCS子字段中，并且索引范围为0到5的HE-SIG-B-MCS。
+
+**27.5 Parameters for HE-MCSs
+27.5.1 General**
+RU26、RU52、RU106、RU242和non-OFDMA 20MHz，RU484和non-OFDMA 40MHz，RU996和non-OFDMA 80MHz，RU2×996和non-OFDMA 160MHz和80+80MHz（NSS=1至8），的速率相关参数参见27.5.2至27.5.8。支持HE-MCS 8、9、10和11在所有情况下都是可选的。
+
+![1718868425084](image/WlanNote/1718868425084.png)
+
+NDBPS是一个整数，应按如下方式计算NDBPS = [ NCBPS / R ]，其中R是编码率。
+
+**27.5.2 HE-MCSs for 26-tone RU**
+
+![1718867998981](image/WlanNote/1718867998981.png)
+
+### 27.6 Parameters for HE-SIG-B-MCSs
+
+表27-111中定义的HE-SIG-B-MCS用于HE-MU PPDU中的HE-SIG-B字段传输。
+
+![1718868493200](image/WlanNote/1718868493200.png)
+
+### L-SIG Field
+
+The L-SIG field includes the following components:
+
+1. RATE Field:
+
+   * Indicates the data rate used for transmitting the rest of the preamble and the payload.
+2. LENGTH Field:
+
+   * Specifies the length of the PPDU in microseconds, indicating how long the transmission will last.
+3. Parity Bit:
+
+   * Used for error detection within the L-SIG field.
+4. Tail Bits:
+
+   Used to reset the convolutional encoder for the transmission
+
 ## HE PPDU
+
+![1718861587043](image/WlanNote/1718861587043.png)
 
 IEEE® 802.11™1 is a packet-based protocol. Each packet, also called a physical layer protocol data unit (PPDU), contains preamble and data fields. The preamble fields contain the **transmission vector format** information. The data field contains the user payload and higher layer headers, such as medium access control (MAC) fields and cyclic redundancy check (CRC). The transmission vector format and the PPDU structure vary between 802.11 versions. The transmission vector (TXVECTOR) format parameter is classified as:
 
@@ -260,30 +514,9 @@ For more information on the HE-LTF, see section 27.3.11.10 of [[2]](https://jp.m
 
 Aggregated MPDU (A-MPDU) pre-end-of-frame (pre-EOF) padding (APEP) length, in bytes, specified as an integer in the interval [0, 6451631]. Setting this property to 0 specifies transmission of an HE NDP.
 
-#### Data modulation
+## L-STF和L-LTF
 
-![1718677895560](image/Wlan/1718677895560.png)
-
-#### L-SIG Field
-
-The L-SIG field includes the following components:
-
-1. RATE Field:
-
-   * Indicates the data rate used for transmitting the rest of the preamble and the payload.
-2. LENGTH Field:
-
-   * Specifies the length of the PPDU in microseconds, indicating how long the transmission will last.
-3. Parity Bit:
-
-   * Used for error detection within the L-SIG field.
-4. Tail Bits:
-
-   Used to reset the convolutional encoder for the transmission
-
-#### L-STF和L-LTF序列
-
-##### 简介
+#### L-STF和L-LTF序列 简介
 
 L-STF（短训练序列）和L-LTF（长训练序列）是IEEE 802.11ac协议中用于进行同步的序列。在此协议中，同步分为两个步骤——粗同步（也称数据包检测）和细同步（符号同步）。其中，粗同步用于判断数据包的到来，细同步用于将数据包的位置精确到bit位。L-STF和L-LTF序列分别用于粗同步和细同步。
 
@@ -293,11 +526,15 @@ L-STF（短训练序列）和L-LTF（长训练序列）是IEEE 802.11ac协议中
 
 ![1718678425984](image/Wlan/1718678425984.png)
 
-##### L-STF生成
+#### L-STF生成
 
 ![1718678529937](image/Wlan/1718678529937.png)
 
 ![1718678529937](image/Wlan/1718678529937.png)![1718678562161](image/Wlan/1718678562161.png)
+
+The [L-STF](https://ww2.mathworks.cn/help/wlan/ref/wlanlstf.html#buzr5pu-1) is two OFDM symbols long and is the first field in the packet structure for the EHT, HE, VHT, HT, and non-HT OFDM formats. For algorithm details, see IEEE Std 802.11ac™-2013 [[1]](https://ww2.mathworks.cn/help/wlan/ref/wlanlstf.html#buzp8qk-8), Section 22.3.8.2.2.
+
+[生成 L-STF 波形 - MATLAB wlanLSTF - MathWorks 中国](https://ww2.mathworks.cn/help/wlan/ref/wlanlstf.html)
 
 **L-STF 的定义和作用**
 
@@ -333,23 +570,16 @@ L-STF 信号是通过对特定的训练序列进行 IFFT（逆快速傅里叶变
 
 L-STF 是 WLAN 中用于信道估计和同步的关键信号字段，结构简单且功能强大，保证了无线通信链路的可靠性和有效性。在实际应用中，L-STF 的有效使用是实现高效无线通信的基础。
 
-##### L-STF生成
-
 L-STF (Legacy Short Training Field) 的信号生成涉及将特定的频域序列通过 IFFT (逆快速傅里叶变换) 转换为时域信号。以下是生成 L-STF 信号的详细步骤：
 
-###### 频域序列定义
+频域序列定义
 
 在 IEEE 802.11a 标准中，L-STF 的频域序列由 52 个子载波组成，其中包含 48 个数据子载波和 4 个导频子载波。频域序列的定义如下：、
 
 * 子载波索引范围：-26 到 +26（不包括 0，即中心直流子载波被跳过）
 * 子载波幅度：±1
 * 序列相位：特定模式
-* 频域序列符号可以表示为：
-* 
-
-```
-S[k]={0,0,1,1,−1,−1,1,1,−1,1,−1,1,1,1,−1,−1,−1,1,−1,1,−1,0,−1,1,−1,−1,0,−1,1,−1,1,1,−1,1,1,1,1,1,−1,1,−1,0,−1,1,−1,1,1,1,1,−1,−1,1,−1,1,−1,0,0}
-```
+* 频域序列符号可以表示为：S[k]={0,0,1,1,−1,−1,1,1,−1,1,−1,1,1,1,−1,−1,−1,1,−1,1,−1,0,−1,1,−1,−1,0,−1,1,−1,1,1,−1,1,1,1,1,1,−1,1,−1,0,−1,1,−1,1,1,1,1,−1,−1,1,−1,1,−1,0,0}
 
 ```matlab
 %   LSTF = lstfSequence returns the sequence used for 20 MHz L-STF as
@@ -370,7 +600,7 @@ lstf = 1/sqrt(2)*[0; 0; 1+1i; 0; ...
 0; 0; 1+1i; 0; 0];
 ```
 
-###### IFFT 转换
+**IFFT 转换**
 
 将上述频域序列进行 IFFT 转换，以得到时域序列。典型的 IFFT 大小为 64 点（因子 N=64），频域序列需要适当地插入零填充，使得序列总长度达到 64 点。
 
@@ -399,7 +629,39 @@ ylabel('Amplitude')
 
 ![1718679055949](image/Wlan/1718679055949.png)
 
-##### L-STF 和 L-LTF的同步
+#### L-LTF 序列
+
+[L-LTF](https://www.mathworks.com/help/wlan/ref/wlanlltf.html#buzr96j-2) time-domain waveform, returned $N_S$  time-domain samples. $ N_S$ is proportional to the channel bandwidth. The time-domain wveform consists of two symbols.
+
+| `ChannelBandwidth`                 | *N*~S~ |
+| ------------------------------------ | --------- |
+| `'CBW5'`, `'CBW10'`, `'CBW20'` | 160       |
+| `'CBW40'`                          | 320       |
+| `'CBW80'`                          | 640       |
+| `'CBW160'`                         | 1280      |
+| `'CBW320'`                         | 2560      |
+
+![1719888290092](image/WlanNote/1719888290092.png)     ![1719888278532](image/WlanNote/1719888278532.png)
+
+The GI can be CP or GI;
+
+**Channel estimation**, **fine frequency offset estimation**, and **fine symbol timing offset estimation** rely on the L-LTF.
+
+![1719888513753](image/WlanNote/1719888513753.png)
+
+| Channel<br />Bandwidth (MHz) | Subcarrier Frequency<br />Spacing*Δ*~F~ (kHz) | Fast Fourier Transform (FFT)<br />Period ($T_{FFT}$= 1 /*Δ* ~F~ ) | Cyclic Prefix or Training Symbol Guard<br />Interval (GI2) Duration (*T*~GI2~=*T*~FFT~/ 2) | L-LTF Duration<br />(*T*~LONG~=*T*~GI2~+ 2 ×*T* ~FFT~ ) |
+| ---------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| 20, 40, 80, 160, and 320     | 312.5                                             | 3.2 μs                                                                 | 1.6 μs                                                                                          | 8 μs                                                             |
+| 10                           | 156.25                                            | 6.4 μs                                                                 | 3.2 μs                                                                                          | 16 μs                                                            |
+| 5                            | 78.125                                            | 12.8 μs                                                                | 6.4 μs                                                                                          | 32 μs                                                            |
+
+The [L-LTF](https://www.mathworks.com/help/wlan/ref/wlanlltf.html#buzr96j-2) is two OFDM symbols long and follows the L-STF of the preamble in the packet structure for the EHT, HE, VHT, HT, and non-HT formats. For algorithm details, refer to IEEE Std 802.11ac™-2013 [[1]](https://www.mathworks.com/help/wlan/ref/wlanlltf.html#buzo_aq), Section 22.3.8.2.3 and IEEE Std 802.11-2012 [[2]](https://www.mathworks.com/help/wlan/ref/wlanlltf.html#bu1_t3d), Section 20.3.9.3.4.
+
+This function performs oversampling by using a larger IFFT and zero pad when generating an OFDM waveform. This diagram shows the oversampling process for an OFDM waveform with `$ T_{FFT}$` subcarriers comprising *N*~g~ guardband subcarriers on either side of *N*~st~ occupied bandwidth subcarriers.
+
+![1719888710315](image/WlanNote/1719888710315.png)
+
+#### L-STF 和 L-LTF的同步
 
 实现同步有多种方法——自相关算法，互相关算法，最大似然机制等等。这里介绍利用自相关算法实现粗同步和利用互相关算法实现细同步。
 
@@ -413,7 +675,41 @@ ylabel('Amplitude')
 
 细同步的思想跟粗同步类似，只不过细同步是将接收到的序列与本地L-LTF序列进行互相关，找到互相关的结果最大的位置，显然，只有当窗口起点在L-LTF序列的起点时，得到的互相关的结果最大。由于L-LTF序列长度已知，就可以得到OFDM符号开始的位置。
 
-#### 802.11AX TRIGGER FRAME
+#### HE-LTF and GI duration Type
+
+![1718680763356](image/Wlan/1718680763356.png)![1718680771013](image/Wlan/1718680771013.png)
+
+The HE-LTF is designed for robust channel estimation, allowing the receiver to accurately estimate the channel characteristics, which is crucial for effective demodulation and decoding of the subsequent data symbols.
+
+#### LDPC Tone Mapper
+
+![1718680741425](image/Wlan/1718680741425.png)
+
+```cpp
+const int HELTF20M_x1_RuSC40MHz 1x HE-LTF  
+const int HELTF40M_x1_RuSC
+```
+
+#### PSDU Length calculation
+
+![1718681093980](image/Wlan/1718681093980.png)
+
+```matlab
+function params = heRateDependentParameters(ruSize,mcs,NSS,DCM)
+function params = heRateDependentParameters(ruSize,mcs,NSS,DCM)
+```
+
+
+
+#### Data modulation
+
+![1718677895560](image/Wlan/1718677895560.png)
+
+## TRIGGER FRAME-802.11AX
+
+Allocates resources for and solicits one or more HE TB PPDU transmissions.
+
+![1719294587266](image/WlanNote/1719294587266.png)
 
 Here is the structure of the common info field:
 
@@ -437,7 +733,15 @@ Here are some of the interesting sub-fields:
 
 ![1718679230415](image/Wlan/1718679230415.png)
 
-#### USER INFO FIELD
+**USER INFO FIELD**
+
+For the AP to solicit an HE TB PPDU, it will transmit a PPDU including a trigger frame(s). Within the trigger frame is the AID12 subfield which may contain the client in which it is addressed to or for UL OFDMA-based random access.
+
+AP must follow EDCA procedure 10.22 (HCF), contend for txop. Device in the solicitation, or trigger frame, will respond to AP’s trigger frame. Device responds with its HE TB PPDU.
+
+The Trigger frame from AP contains duration, RU allocation, target RSSI, and MCS for the device’s HE TB PPDU.
+
+In UL, there is a trigger frame which indicates RU allocation, duration, target RSSI, and MCS.
 
 The User Info field provides details on each client devices participating in the same upcoming OFDMA transmission.
 
@@ -447,7 +751,7 @@ The User Info field provides details on each client devices participating in the
 
 Here are some of the interesting sub-fields:
 
-* Association ID: indicates the association ID of the addressed STA (`filter =wlan.trigger.he.user_info.aid`)
+* Association ID: indicates the association ID of the addressed STA (`filter =wlan.trigger.he.user_info.aid`). the AID12 subfield – contains 12 LSBs of the AID of the client that it is intended to.The AID12 subfield, if within the range of 1 – 2007, then will indicate the RU used by the HE TB PPDU of a client identified in AID12.
 * RU Allocation: indicates the size and location of the ressource unit allocated for the addressed STA (`filter = wlan.trigger.he.ru_allocation`)
 * UL MCS: indicates which MCS is expected the STA to use (`filter = wlan.trigger.he.mcs`)
 * SS Allocation: indicates the number of spatial streams to be used by the addressed STA. You will have to minus 1 to the number. (`filter = wlan.trigger.he.ru_number_of_spatial_stream`)
@@ -461,54 +765,64 @@ In this example, we can see that 2x STA will be sharing the 20MHz channel in 2x 
 
 Both client devices are expected to be using MCS 11, 1 spatial streams. And their PPDUs is expected to be received with a RSSI of -30dBm.
 
+**RU Allocation**
+
+The RU Allocation consists of 8 bits that indicates the size of RUs and their placement in the frequency domain. It follows the mapping presented in Table 28-24. There can be up to 9 simultaneous devices.
+
+![1719294744562](image/WlanNote/1719294744562.png)
+
+![1719294773236](image/WlanNote/1719294773236.png)
+
+after the RU allocation field,  multiple User field is followed which specify station-specific details such as Station ID, number of spatial streams to be used and MCS to be used.
+
+![1719294956100](image/WlanNote/1719294956100.png)
+
 [The 802.11ax Trigger Frame – SemFio Networks](https://semfionetworks.com/blog/the-80211ax-trigger-frame/)
 
-#### LDPC Tone Mapper
+[802.11ax-2021协议学习__$9-Frame-Format__$9.3.1.22-Trigger-frame-format_he-tb测试-CSDN博客](https://blog.csdn.net/weixin_42997255/article/details/127441527?spm=1001.2014.3001.5502)
 
-![1718680741425](image/Wlan/1718680741425.png)
+## MCS Table
 
-#### HE-LTF and GI duration Type
+802.11AC MCS TABLE
 
-![1718680763356](image/Wlan/1718680763356.png)![1718680771013](image/Wlan/1718680771013.png)
+![1719293114691](image/WlanNote/1719293114691.png)
 
-The HE-LTF is designed for robust channel estimation, allowing the receiver to accurately estimate the channel characteristics, which is crucial for effective demodulation and decoding of the subsequent data symbols.
+802.11AX MCS TABLE (OFDM)
 
-#### 26-Tone RU
+This table only presents the data rates for 802.11ax communications when OFDM is used:
 
-![1718680805296](image/Wlan/1718680805296.png)
+![1719292156269](image/WlanNote/1719292156269.png)
 
-#### Pilot
+802.11ax MCS Table (OFDMA)
 
-##### Subcarriers
+This table only presents the data rates for 802.11ax communications when OFDMA is used:
 
-![1718680826613](image/Wlan/1718680826613.png)
+![1719292190304](image/WlanNote/1719292190304.png)
 
-##### pilot position
+the math behind it
 
-![1718680838442](image/Wlan/1718680838442.png)
+First we need to understand how the MCS data rates are calculated prior 802.11ax. I am only going to focus on 802.11n (HT) and 802.11ac (VHT) here. Here is the formula we can use to calculate which data rate is used for both 802.11n and 802.11ac:
 
-##### pilot sequence
+![1719292264251](image/WlanNote/1719292264251.png)
 
-![1718680935123](image/Wlan/1718680935123.png)
+Let’s now details each of these variables and which values they can have when HE (802.11ax) is used. The first table details the parameters used when OFDMA is not used. The second table details the parameters when OFDMA and resource units are used.
 
-```cpp
-const int HELTF20M_x1_RuSC40MHz 1x HE-LTF  
-const int HELTF40M_x1_RuSC
-```
+![1719292364099](image/WlanNote/1719292364099.png)
 
-##### DC and guard subcarriers
+<p style='text-align: center;'> HE OFDM Parameters </p>
 
-![1718681011807](image/Wlan/1718681011807.png)
+![1719292389452](image/WlanNote/1719292389452.png)
 
-##### NULL Subcarrier
+<p style='text-align: center;'> HE OFDMA Parameters </p>
 
-![1718681027133](image/Wlan/1718681027133.png)
+Due to the addition of a new modulation technique (QAM-1024), 2 new MCS indexes are now available with 802.11ax:
 
-![1718681038492](image/Wlan/1718681038492.png)
+* Index 10: when the 1024-QAM modulation is used with a coding of 3/4
+* Index 11: when the 1024-QAM modulation is used with a coding of 5/6
 
-#### PSDU Length calculation
+[MCS Table (Updated with 802.11ax Data Rates) – SemFio Networks](https://semfionetworks.com/blog/mcs-table-updated-with-80211ax-data-rates/)
 
-![1718681093980](image/Wlan/1718681093980.png)
+[802.11 OFDM Data Rates – The Math Behind The Numbers – dot11 exposed](https://dot11.exposed/2018/11/29/802-11-ofdm-data-rates-the-math-behind-the-numbers/)
 
 ```matlab
 function params = heRateDependentParameters(ruSize,mcs,NSS,DCM)
@@ -519,3 +833,23 @@ function params = heRateDependentParameters(ruSize,mcs,NSS,DCM)
 ## some code
 
 [hui811116/gr-wifi-dsss: An IEEE 802.11b physical layer prototype on Gnuradio &amp; USRP (github.com)](https://github.com/hui811116/gr-wifi-dsss)
+[802.11ax Series (cleartosend.net)](https://www.cleartosend.net/802-11ax-series/)
+
+## Channel Estimation
+
+
+NI Channel Estimation Type
+
+<p align="center">
+<img src="image/WlanNote/1718855639662.png">
+</p>
+
+![1718855653627](image/WlanNote/1718855653627.png)
+
+你可以看到信道估计也使用了 LTF，为什么 要额外增加一个选项即 L-LTF Enabled功能呢？
+
+首先，LTFs 不包括 L-LTF。 LTFs 是指 EHT-LTF , HE-LTF , VHT-LTF,HT-LTF ，所以，可以把 LTFs 看成 x-LTF；协议标准仅定义了如何使用“LTF”的信道估计，但是没有规定L-LTF；当你要启用 L-LTF 进行信道估计时，您可以在 EVM 上获得很好的改进结果，但它超出了协议的要求。
+
+802.11be 的帧结构如下所示：
+
+![1718855686569](image/WlanNote/1718855686569.png)
