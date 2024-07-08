@@ -824,6 +824,7 @@ Due to the addition of a new modulation technique (QAM-1024), 2 new MCS indexes 
 
 [802.11 OFDM Data Rates – The Math Behind The Numbers – dot11 exposed](https://dot11.exposed/2018/11/29/802-11-ofdm-data-rates-the-math-behind-the-numbers/)
 
+<<<<<<< HEAD
 ```matlab
 function params = heRateDependentParameters(ruSize,mcs,NSS,DCM)
 function params = heRateDependentParameters(ruSize,mcs,NSS,DCM)
@@ -833,6 +834,8 @@ function params = heRateDependentParameters(ruSize,mcs,NSS,DCM)
 ## some code
 
 [hui811116/gr-wifi-dsss: An IEEE 802.11b physical layer prototype on Gnuradio &amp; USRP (github.com)](https://github.com/hui811116/gr-wifi-dsss)
+=======
+>>>>>>> refs/remotes/origin/main
 [802.11ax Series (cleartosend.net)](https://www.cleartosend.net/802-11ax-series/)
 
 ## Channel Estimation
