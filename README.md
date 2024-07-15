@@ -1,2 +1,0 @@
-# localDoc
-local document
