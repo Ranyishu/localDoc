@@ -1,5 +1,11 @@
 ## introduction
 
+
+
+![1719301330914](image/WlanNote/1719301330914.png)
+
+**IEEE 802.11be** , dubbed  *Extremely High Throughput (EHT)* , is the latest of the [IEEE](https://en.wikipedia.org/wiki/Institute_of_Electrical_and_Electronics_Engineers "Institute of Electrical and Electronics Engineers") [802.11](https://en.wikipedia.org/wiki/IEEE_802.11 "IEEE 802.11") standard, ^[[9]](https://en.wikipedia.org/wiki/IEEE_802.11be#cite_note-11)^ ^[[10]](https://en.wikipedia.org/wiki/IEEE_802.11be#cite_note-12)^ which is designated  **Wi-Fi 7** . ^[[11]](https://en.wikipedia.org/wiki/IEEE_802.11be#cite_note-cnet-wifi7-13)^  ^[[12]](https://en.wikipedia.org/wiki/IEEE_802.11be#cite_note-ieee-wifi7-14)^ ^[[13]](https://en.wikipedia.org/wiki/IEEE_802.11be#cite_note-15)^ It has built upon [802.11ax](https://en.wikipedia.org/wiki/IEEE_802.11ax "IEEE 802.11ax"), focusing on [WLAN](https://en.wikipedia.org/wiki/Wireless_LAN "Wireless LAN") indoor and outdoor operation with stationary and pedestrian speeds in the 2.4, 5, and 6 GHz frequency bands.^[[14]](https://en.wikipedia.org/wiki/IEEE_802.11be#cite_note-16)^
+
 [802.11有多个子标准，如802.11a/b/g/n/ac/ax/be等，每个子标准使用不同的物理层技术，如FHSS、DSSS、OFDM和MIMO等](https://www.bing.com/ck/a?!&&p=ab90d26e2a2ba9c7JmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1NQ&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzEwMDAxMTMzMTQvYmQ5NTU3YWQ&ntb=1)[3](https://www.bing.com/ck/a?!&&p=384c20c70d65e8abJmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1Ng&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzEwMDAxMTMzMTQvYmQ5NTU3YWQ&ntb=1)[2](https://www.bing.com/ck/a?!&&p=55db694531864049JmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1Nw&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzExMDAwMzM5NzYvMzU4MjUyMTQ&ntb=1)。[802.11的演进带来了数据传输速率的提升](https://www.bing.com/ck/a?!&&p=10b74497828f6804JmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1OA&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzEwMDAxMTMzMTQvYmQ5NTU3YWQ&ntb=1)[3](https://www.bing.com/ck/a?!&&p=6a44c1decd722827JmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1OQ&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzEwMDAxMTMzMTQvYmQ5NTU3YWQ&ntb=1)。
 
 ### 80211 a frame format
@@ -59,7 +65,6 @@ Let us understand 802.11ax frame. Its structure is similar to 802.11n and 802.11
 
 [
     802.11ax (Wi-Fi 6) - MATLAB&amp; Simulink (mathworks.com)](https://www.mathworks.com/help/wlan/802.11ax-reception.html?s_tid=CRUX_lftnav)
-
 
 ### OFDMA
 
@@ -311,7 +316,7 @@ The **OFDM SIG Info** summary trace shows the following SIG field information.
 
   [OFDM SIG Info (802.11n/ac/ax/be) (keysight.com)](https://helpfiles.keysight.com/csg/89600B/Webhelp/Subsystems/wlan-mimo/content/trc_ofdm_ht-sig_info.htm)
 
-## 27.3.11.8-HE-SIG-B
+### 27.3.11.8-HE-SIG-B
 
 **27.3.11.8.1 General**
 HE-SIG-B字段提供必要的信令，包括OFDMA和DL MU-MIMO资源分配信息，以便允许STA查找要在PPDU的HE modulated字段中使用的对应资源。HE-SIG-B字段的整数字段以无符号二进制格式传输，首先是LSB，其中LSB位于编号最低的位置。
@@ -346,7 +351,7 @@ Table 27-24 — Common field
 
 [802.11ax-2021协议学习__$27-HE-PHY__$27.3.11-HE-preamble__$27.3.11.8-HE-SIG-B_802.11 ax bcc code-CSDN博客](https://blog.csdn.net/weixin_42997255/article/details/132348522?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522171886771016800182733433%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&request_id=171886771016800182733433&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_ecpm_v1~rank_v31_ecpm-3-132348522-null-null.nonecase&utm_term=ax&spm=1018.2226.3001.4450)
 
-## 27.5-Parameters-for-HE-MCSs
+### 27.5-Parameters-for-HE-MCSs
 
 **27.3.7 Modulation and coding scheme (HE-MCSs)**
 
@@ -376,11 +381,28 @@ NDBPS是一个整数，应按如下方式计算NDBPS = [ NCBPS / R ]，其中R�
 
 ![1718867998981](image/WlanNote/1718867998981.png)
 
-## 27.6 Parameters for HE-SIG-B-MCSs
+### 27.6 Parameters for HE-SIG-B-MCSs
 
 表27-111中定义的HE-SIG-B-MCS用于HE-MU PPDU中的HE-SIG-B字段传输。
 
 ![1718868493200](image/WlanNote/1718868493200.png)
+
+### L-SIG Field
+
+The L-SIG field includes the following components:
+
+1. RATE Field:
+
+   * Indicates the data rate used for transmitting the rest of the preamble and the payload.
+2. LENGTH Field:
+
+   * Specifies the length of the PPDU in microseconds, indicating how long the transmission will last.
+3. Parity Bit:
+
+   * Used for error detection within the L-SIG field.
+4. Tail Bits:
+
+   Used to reset the convolutional encoder for the transmission
 
 ## HE PPDU
 
@@ -493,30 +515,9 @@ For more information on the HE-LTF, see section 27.3.11.10 of [[2]](https://jp.m
 
 Aggregated MPDU (A-MPDU) pre-end-of-frame (pre-EOF) padding (APEP) length, in bytes, specified as an integer in the interval [0, 6451631]. Setting this property to 0 specifies transmission of an HE NDP.
 
-#### Data modulation
+## L-STF和L-LTF
 
-![1718677895560](image/Wlan/1718677895560.png)
-
-#### L-SIG Field
-
-The L-SIG field includes the following components:
-
-1. RATE Field:
-
-   * Indicates the data rate used for transmitting the rest of the preamble and the payload.
-2. LENGTH Field:
-
-   * Specifies the length of the PPDU in microseconds, indicating how long the transmission will last.
-3. Parity Bit:
-
-   * Used for error detection within the L-SIG field.
-4. Tail Bits:
-
-   Used to reset the convolutional encoder for the transmission
-
-#### L-STF和L-LTF序列
-
-##### 简介
+#### L-STF和L-LTF序列 简介
 
 L-STF（短训练序列）和L-LTF（长训练序列）是IEEE 802.11ac协议中用于进行同步的序列。在此协议中，同步分为两个步骤——粗同步（也称数据包检测）和细同步（符号同步）。其中，粗同步用于判断数据包的到来，细同步用于将数据包的位置精确到bit位。L-STF和L-LTF序列分别用于粗同步和细同步。
 
@@ -526,11 +527,15 @@ L-STF（短训练序列）和L-LTF（长训练序列）是IEEE 802.11ac协议中
 
 ![1718678425984](image/Wlan/1718678425984.png)
 
-##### L-STF生成
+#### L-STF生成
 
 ![1718678529937](image/Wlan/1718678529937.png)
 
 ![1718678529937](image/Wlan/1718678529937.png)![1718678562161](image/Wlan/1718678562161.png)
+
+The [L-STF](https://ww2.mathworks.cn/help/wlan/ref/wlanlstf.html#buzr5pu-1) is two OFDM symbols long and is the first field in the packet structure for the EHT, HE, VHT, HT, and non-HT OFDM formats. For algorithm details, see IEEE Std 802.11ac™-2013 [[1]](https://ww2.mathworks.cn/help/wlan/ref/wlanlstf.html#buzp8qk-8), Section 22.3.8.2.2.
+
+[生成 L-STF 波形 - MATLAB wlanLSTF - MathWorks 中国](https://ww2.mathworks.cn/help/wlan/ref/wlanlstf.html)
 
 **L-STF 的定义和作用**
 
@@ -575,12 +580,7 @@ L-STF (Legacy Short Training Field) 的信号生成涉及将特定的频域序�
 * 子载波索引范围：-26 到 +26（不包括 0，即中心直流子载波被跳过）
 * 子载波幅度：±1
 * 序列相位：特定模式
-* 频域序列符号可以表示为：
-* 
-
-```
-S[k]={0,0,1,1,−1,−1,1,1,−1,1,−1,1,1,1,−1,−1,−1,1,−1,1,−1,0,−1,1,−1,−1,0,−1,1,−1,1,1,−1,1,1,1,1,1,−1,1,−1,0,−1,1,−1,1,1,1,1,−1,−1,1,−1,1,−1,0,0}
-```
+* 频域序列符号可以表示为：S[k]={0,0,1,1,−1,−1,1,1,−1,1,−1,1,1,1,−1,−1,−1,1,−1,1,−1,0,−1,1,−1,−1,0,−1,1,−1,1,1,−1,1,1,1,1,1,−1,1,−1,0,−1,1,−1,1,1,1,1,−1,−1,1,−1,1,−1,0,0}
 
 ```matlab
 %   LSTF = lstfSequence returns the sequence used for 20 MHz L-STF as
@@ -630,7 +630,39 @@ ylabel('Amplitude')
 
 ![1718679055949](image/Wlan/1718679055949.png)
 
-##### L-STF 和 L-LTF的同步
+#### L-LTF 序列
+
+[L-LTF](https://www.mathworks.com/help/wlan/ref/wlanlltf.html#buzr96j-2) time-domain waveform, returned $N_S$  time-domain samples. $ N_S$ is proportional to the channel bandwidth. The time-domain wveform consists of two symbols.
+
+| `ChannelBandwidth`                 | *N*~S~ |
+| ------------------------------------ | --------- |
+| `'CBW5'`, `'CBW10'`, `'CBW20'` | 160       |
+| `'CBW40'`                          | 320       |
+| `'CBW80'`                          | 640       |
+| `'CBW160'`                         | 1280      |
+| `'CBW320'`                         | 2560      |
+
+![1719888290092](image/WlanNote/1719888290092.png)     ![1719888278532](image/WlanNote/1719888278532.png)
+
+The GI can be CP or GI;
+
+**Channel estimation**, **fine frequency offset estimation**, and **fine symbol timing offset estimation** rely on the L-LTF.
+
+![1719888513753](image/WlanNote/1719888513753.png)
+
+| Channel<br />Bandwidth (MHz) | Subcarrier Frequency<br />Spacing*Δ*~F~ (kHz) | Fast Fourier Transform (FFT)<br />Period ($T_{FFT}$= 1 /*Δ* ~F~ ) | Cyclic Prefix or Training Symbol Guard<br />Interval (GI2) Duration (*T*~GI2~=*T*~FFT~/ 2) | L-LTF Duration<br />(*T*~LONG~=*T*~GI2~+ 2 ×*T* ~FFT~ ) |
+| ---------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| 20, 40, 80, 160, and 320     | 312.5                                             | 3.2 μs                                                                 | 1.6 μs                                                                                          | 8 μs                                                             |
+| 10                           | 156.25                                            | 6.4 μs                                                                 | 3.2 μs                                                                                          | 16 μs                                                            |
+| 5                            | 78.125                                            | 12.8 μs                                                                | 6.4 μs                                                                                          | 32 μs                                                            |
+
+The [L-LTF](https://www.mathworks.com/help/wlan/ref/wlanlltf.html#buzr96j-2) is two OFDM symbols long and follows the L-STF of the preamble in the packet structure for the EHT, HE, VHT, HT, and non-HT formats. For algorithm details, refer to IEEE Std 802.11ac™-2013 [[1]](https://www.mathworks.com/help/wlan/ref/wlanlltf.html#buzo_aq), Section 22.3.8.2.3 and IEEE Std 802.11-2012 [[2]](https://www.mathworks.com/help/wlan/ref/wlanlltf.html#bu1_t3d), Section 20.3.9.3.4.
+
+This function performs oversampling by using a larger IFFT and zero pad when generating an OFDM waveform. This diagram shows the oversampling process for an OFDM waveform with `$ T_{FFT}$` subcarriers comprising *N*~g~ guardband subcarriers on either side of *N*~st~ occupied bandwidth subcarriers.
+
+![1719888710315](image/WlanNote/1719888710315.png)
+
+#### L-STF 和 L-LTF的同步
 
 实现同步有多种方法——自相关算法，互相关算法，最大似然机制等等。这里介绍利用自相关算法实现粗同步和利用互相关算法实现细同步。
 
@@ -668,21 +700,9 @@ function params = heRateDependentParameters(ruSize,mcs,NSS,DCM)
 function params = heRateDependentParameters(ruSize,mcs,NSS,DCM)
 ```
 
-NI Channel Estimation Type
+#### Data modulation
 
-<p align="center">
-<img src="image/WlanNote/1718855639662.png">
-</p>
-
-![1718855653627](image/WlanNote/1718855653627.png)
-
-你可以看到信道估计也使用了 LTF，为什么 要额外增加一个选项即 L-LTF Enabled功能呢？
-
-首先，LTFs 不包括 L-LTF。 LTFs 是指 EHT-LTF , HE-LTF , VHT-LTF,HT-LTF ，所以，可以把 LTFs 看成 x-LTF；协议标准仅定义了如何使用“LTF”的信道估计，但是没有规定L-LTF；当你要启用 L-LTF 进行信道估计时，您可以在 EVM 上获得很好的改进结果，但它超出了协议的要求。
-
-802.11be 的帧结构如下所示：
-
-![1718855686569](image/WlanNote/1718855686569.png)
+![1718677895560](image/Wlan/1718677895560.png)
 
 ## TRIGGER FRAME-802.11AX
 
@@ -712,7 +732,6 @@ Here are some of the interesting sub-fields:
 
 ![1718679230415](image/Wlan/1718679230415.png)
 
-
 **USER INFO FIELD**
 
 For the AP to solicit an HE TB PPDU, it will transmit a PPDU including a trigger frame(s). Within the trigger frame is the AID12 subfield which may contain the client in which it is addressed to or for UL OFDMA-based random access.
@@ -722,7 +741,6 @@ AP must follow EDCA procedure 10.22 (HCF), contend for txop. Device in the solic
 The Trigger frame from AP contains duration, RU allocation, target RSSI, and MCS for the device’s HE TB PPDU.
 
 In UL, there is a trigger frame which indicates RU allocation, duration, target RSSI, and MCS.
-
 
 The User Info field provides details on each client devices participating in the same upcoming OFDMA transmission.
 
@@ -745,7 +763,6 @@ Here is an example of a common field:
 In this example, we can see that 2x STA will be sharing the 20MHz channel in 2x 106-tones Ressource Units.
 
 Both client devices are expected to be using MCS 11, 1 spatial streams. And their PPDUs is expected to be received with a RSSI of -30dBm.
-
 
 **RU Allocation**
 
@@ -807,3 +824,21 @@ Due to the addition of a new modulation technique (QAM-1024), 2 new MCS indexes 
 [802.11 OFDM Data Rates – The Math Behind The Numbers – dot11 exposed](https://dot11.exposed/2018/11/29/802-11-ofdm-data-rates-the-math-behind-the-numbers/)
 
 [802.11ax Series (cleartosend.net)](https://www.cleartosend.net/802-11ax-series/)
+
+## Channel Estimation
+
+NI Channel Estimation Type
+
+<p align="center">
+<img src="image/WlanNote/1718855639662.png">
+</p>
+
+![1718855653627](image/WlanNote/1718855653627.png)
+
+你可以看到信道估计也使用了 LTF，为什么 要额外增加一个选项即 L-LTF Enabled功能呢？
+
+首先，LTFs 不包括 L-LTF。 LTFs 是指 EHT-LTF , HE-LTF , VHT-LTF,HT-LTF ，所以，可以把 LTFs 看成 x-LTF；协议标准仅定义了如何使用“LTF”的信道估计，但是没有规定L-LTF；当你要启用 L-LTF 进行信道估计时，您可以在 EVM 上获得很好的改进结果，但它超出了协议的要求。
+
+802.11be 的帧结构如下所示：
+
+![1718855686569](image/WlanNote/1718855686569.png)
