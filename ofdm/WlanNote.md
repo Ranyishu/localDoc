@@ -1,25 +1,11 @@
 ## introduction
 
-<<<<<<< HEAD
-
-![1719301330914](image/WlanNote/1719301330914.png)
-
-**IEEE 802.11be** , dubbed  *Extremely High Throughput (EHT)* , is the latest of the [IEEE](https://en.wikipedia.org/wiki/Institute_of_Electrical_and_Electronics_Engineers "Institute of Electrical and Electronics Engineers") [802.11](https://en.wikipedia.org/wiki/IEEE_802.11 "IEEE 802.11") standard, ^[[9]](https://en.wikipedia.org/wiki/IEEE_802.11be#cite_note-11)^ ^[[10]](https://en.wikipedia.org/wiki/IEEE_802.11be#cite_note-12)^ which is designated  **Wi-Fi 7** . ^[[11]](https://en.wikipedia.org/wiki/IEEE_802.11be#cite_note-cnet-wifi7-13)^  ^[[12]](https://en.wikipedia.org/wiki/IEEE_802.11be#cite_note-ieee-wifi7-14)^ ^[[13]](https://en.wikipedia.org/wiki/IEEE_802.11be#cite_note-15)^ It has built upon [802.11ax](https://en.wikipedia.org/wiki/IEEE_802.11ax "IEEE 802.11ax"), focusing on [WLAN](https://en.wikipedia.org/wiki/Wireless_LAN "Wireless LAN") indoor and outdoor operation with stationary and pedestrian speeds in the 2.4, 5, and 6 GHz frequency bands.^[[14]](https://en.wikipedia.org/wiki/IEEE_802.11be#cite_note-16)^
-
-=======
-
 ### specification
 
 [WIFI-DOCS/IEEE-802.11 at master · WHJWNAVY/WIFI-DOCS (github.com)](https://github.com/WHJWNAVY/WIFI-DOCS/tree/master/IEEE-802.11)
 
->>>>>>> cb5346b1b684a12f89987bb8e958918fcade722a
->>>>>>> [802.11有多个子标准，如802.11a/b/g/n/ac/ax/be等，每个子标准使用不同的物理层技术，如FHSS、DSSS、OFDM和MIMO等](https://www.bing.com/ck/a?!&&p=ab90d26e2a2ba9c7JmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1NQ&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzEwMDAxMTMzMTQvYmQ5NTU3YWQ&ntb=1)[3](https://www.bing.com/ck/a?!&&p=384c20c70d65e8abJmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1Ng&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzEwMDAxMTMzMTQvYmQ5NTU3YWQ&ntb=1)[2](https://www.bing.com/ck/a?!&&p=55db694531864049JmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1Nw&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzExMDAwMzM5NzYvMzU4MjUyMTQ&ntb=1)。[802.11的演进带来了数据传输速率的提升](https://www.bing.com/ck/a?!&&p=10b74497828f6804JmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1OA&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzEwMDAxMTMzMTQvYmQ5NTU3YWQ&ntb=1)[3](https://www.bing.com/ck/a?!&&p=6a44c1decd722827JmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1OQ&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzEwMDAxMTMzMTQvYmQ5NTU3YWQ&ntb=1)。
->>>>>>>
->>>>>>
->>>>>
->>>>
->>>
->>
+
+[802.11有多个子标准，如802.11a/b/g/n/ac/ax/be等，每个子标准使用不同的物理层技术，如FHSS、DSSS、OFDM和MIMO等](https://www.bing.com/ck/a?!&&p=ab90d26e2a2ba9c7JmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1NQ&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzEwMDAxMTMzMTQvYmQ5NTU3YWQ&ntb=1)[3](https://www.bing.com/ck/a?!&&p=384c20c70d65e8abJmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1Ng&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzEwMDAxMTMzMTQvYmQ5NTU3YWQ&ntb=1)[2](https://www.bing.com/ck/a?!&&p=55db694531864049JmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1Nw&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzExMDAwMzM5NzYvMzU4MjUyMTQ&ntb=1)。[802.11的演进带来了数据传输速率的提升](https://www.bing.com/ck/a?!&&p=10b74497828f6804JmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1OA&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzEwMDAxMTMzMTQvYmQ5NTU3YWQ&ntb=1)[3](https://www.bing.com/ck/a?!&&p=6a44c1decd722827JmltdHM9MTcxODE1MDQwMCZpZ3VpZD0xNmI1OGM2OS03ZjFjLTY5OWItMWE2OC05ODQ0N2VjZTY4YzYmaW5zaWQ9NTc1OQ&ptn=3&ver=2&hsh=3&fclid=16b58c69-7f1c-699b-1a68-98447ece68c6&psq=802.11%e6%9c%89%e5%93%aa%e4%ba%9b%e5%8d%8f%e8%ae%ae&u=a1aHR0cHM6Ly9zdXBwb3J0Lmh1YXdlaS5jb20vZW50ZXJwcmlzZS96aC9kb2MvRURPQzEwMDAxMTMzMTQvYmQ5NTU3YWQ&ntb=1)。
 
 ### 80211 a frame format
 
@@ -713,22 +699,11 @@ function params = heRateDependentParameters(ruSize,mcs,NSS,DCM)
 function params = heRateDependentParameters(ruSize,mcs,NSS,DCM)
 ```
 
-<<<<<<< HEAD
+
 
 #### Data modulation
 
-=======
-
-#### Data modulation
-
->>>>>>> cb5346b1b684a12f89987bb8e958918fcade722a
->>>>>>> ![1718677895560](image/Wlan/1718677895560.png)
->>>>>>>
->>>>>>
->>>>>
->>>>
->>>
->>
+![1718677895560](image/Wlan/1718677895560.png)
 
 ## TRIGGER FRAME-802.11AX
 
@@ -849,30 +824,21 @@ Due to the addition of a new modulation technique (QAM-1024), 2 new MCS indexes 
 
 [802.11 OFDM Data Rates – The Math Behind The Numbers – dot11 exposed](https://dot11.exposed/2018/11/29/802-11-ofdm-data-rates-the-math-behind-the-numbers/)
 
-<<<<<<< HEAD
-
 ```matlab
 function params = heRateDependentParameters(ruSize,mcs,NSS,DCM)
 function params = heRateDependentParameters(ruSize,mcs,NSS,DCM)
 ```
 
+
 ## some code
 
 [hui811116/gr-wifi-dsss: An IEEE 802.11b physical layer prototype on Gnuradio &amp; USRP (github.com)](https://github.com/hui811116/gr-wifi-dsss)
-====================================================================================================
-
->>>>>>> refs/remotes/origin/main
->>>>>>> [802.11ax Series (cleartosend.net)](https://www.cleartosend.net/802-11ax-series/)
->>>>>>>
->>>>>>
->>>>>
->>>>
->>>
->>
+[802.11ax Series (cleartosend.net)](https://www.cleartosend.net/802-11ax-series/)
 
 ## Channel Estimation
 
-## NI Channel Estimation Type
+
+NI Channel Estimation Type
 
 <p align="center">
 <img src="image/WlanNote/1718855639662.png">
