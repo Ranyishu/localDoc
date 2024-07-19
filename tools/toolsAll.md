@@ -125,5 +125,25 @@ https://docs.pingcode.com/ask/59888.html
 
 https://alvincat.github.io/2018/2018-05-20-%E6%90%AD%E5%BB%BAGit%E6%9C%AC%E5%9C%B0%E6%9C%8D%E5%8A%A1%E7%9A%84%E6%96%B9%E6%B3%95.html
 
-
 [Install Bonobo Git Server (Private Git Server) on Windows x86/x64 - Peerasak Pigeon Chatsermsak - Medium](https://pi6eon.medium.com/install-bonobo-git-server-private-git-server-on-windows-x86-x64-cfe5b55fea6d)
+
+git fetch and git pull
+
+![1721209642179](image/toolsAll/1721209642179.png)
+
+![1721209692252](image/toolsAll/1721209692252.png)
+
+### Should I use *git fetch* or  *git pull* ?
+
+If your workspace has no uncommitted files, and you want to copy the latest changes from a remote repository directly into your working directory, then issue the *git pull* command.
+
+If you want to pull down the latest changes from a remote repository without overwriting anything in your working directory, then use  *git fetch* , and then do a *git merge* when the time is right.
+
+
+### [How to undo a git push (warp.dev)](https://www.warp.dev/terminus/undo-a-git-push#:~:text=If%20you%20need%20to%20make,to%20undo%20a%20git%20push.&text=Using%20the%20%2D%2Dsoft%20flag,be%20staged%20to%20be%20committed.)
+
+```
+git reset --soft <commit-hash>  
+git commit -m" ......"  
+git push --force
+```
