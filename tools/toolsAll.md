@@ -113,10 +113,6 @@ select Cal kit
 
 # git 使用
 
-git 文件状态
-
-![1719913725521](image/toolsAll/1719913725521.png)
-
 ### git rebase
 
 drop the rebase  `git rebase --skip`
@@ -138,7 +134,6 @@ git fetch and git pull
 If your workspace has no uncommitted files, and you want to copy the latest changes from a remote repository directly into your working directory, then issue the *git pull* command.
 
 If you want to pull down the latest changes from a remote repository without overwriting anything in your working directory, then use  *git fetch* , and then do a *git merge* when the time is right.
-
 
 ### [How to undo a git push (warp.dev)](https://www.warp.dev/terminus/undo-a-git-push#:~:text=If%20you%20need%20to%20make,to%20undo%20a%20git%20push.&text=Using%20the%20%2D%2Dsoft%20flag,be%20staged%20to%20be%20committed.)
 
