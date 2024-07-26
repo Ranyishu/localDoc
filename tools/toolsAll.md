@@ -82,16 +82,9 @@ unix unser name: smstuni, passport aligned with win
 
 # Wi-1000X 配对
 
->>>>>>> cb5346b1b684a12f89987bb8e958918fcade722a
->>>>>>> 索尼WI-1000X耳机连接蓝牙的明确确保耳机进入配对模式，并在蓝牙设备上搜索并连接"WI-1000X"即可。
->>>>>>> 以下是详细的连接步骤：
->>>>>>> 一、打开耳机并进入配对模式
->>>>>>>
->>>>>>
->>>>>
->>>>
->>>
->>
+索尼WI-1000X耳机连接蓝牙的明确确保耳机进入配对模式，并在蓝牙设备上搜索并连接"WI-1000X"即可。
+以下是详细的连接步骤：
+一、打开耳机并进入配对模式
 
 1. 确保耳机已经充电并且有足够的电量。
 2. 按住耳机上的**电源按钮**，直到听到提示音，并且指示灯开始闪烁蓝色和红色，这表示耳机已进入配对模式。
@@ -113,6 +106,17 @@ select Cal kit
 
 # git 使用
 
+<<<<<<< Updated upstream
+=======
+git 文件状态
+
+![1719913725521](image/toolsAll/1719913725521.png)
+
+### git 中文乱码
+
+[解决 git log 乱码-腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1728748)
+
+>>>>>>> Stashed changes
 ### git rebase
 
 drop the rebase  `git rebase --skip`
@@ -123,22 +127,50 @@ https://alvincat.github.io/2018/2018-05-20-%E6%90%AD%E5%BB%BAGit%E6%9C%AC%E5%9C%
 
 [Install Bonobo Git Server (Private Git Server) on Windows x86/x64 - Peerasak Pigeon Chatsermsak - Medium](https://pi6eon.medium.com/install-bonobo-git-server-private-git-server-on-windows-x86-x64-cfe5b55fea6d)
 
-git fetch and git pull
+### git rm
+
+#### [Remove a file from a Git repository without deleting it from the local filesystem](https://stackoverflow.com/questions/1143796/remove-a-file-from-a-git-repository-without-deleting-it-from-the-local-filesyste)
+
+The [`git rm`](https://git-scm.com/docs/git-rm) documentation states:
+
+> When `--cached` is given, the staged content has to match either the tip of the branch or the file on disk, allowing the file to be removed from just the index.
+
+So, for a single file:
+
+```
+git rm --cached file_to_remove.txt
+```
+
+and for a single directory:
+
+```
+git rm --cached -r directory_to_remove
+```
+
+### git fetch / pull
 
 ![1721209642179](image/toolsAll/1721209642179.png)
 
 ![1721209692252](image/toolsAll/1721209692252.png)
 
-### Should I use *git fetch* or  *git pull* ?
+#### Should I use *git fetch* or  *git pull* ?
 
 If your workspace has no uncommitted files, and you want to copy the latest changes from a remote repository directly into your working directory, then issue the *git pull* command.
 
 If you want to pull down the latest changes from a remote repository without overwriting anything in your working directory, then use  *git fetch* , and then do a *git merge* when the time is right.
 
+<<<<<<< Updated upstream
 ### [How to undo a git push (warp.dev)](https://www.warp.dev/terminus/undo-a-git-push#:~:text=If%20you%20need%20to%20make,to%20undo%20a%20git%20push.&text=Using%20the%20%2D%2Dsoft%20flag,be%20staged%20to%20be%20committed.)
+=======
+### [git push undo (warp.dev)](https://www.warp.dev/terminus/undo-a-git-push#:~:text=If%20you%20need%20to%20make,to%20undo%20a%20git%20push.&text=Using%20the%20%2D%2Dsoft%20flag,be%20staged%20to%20be%20committed.)
+>>>>>>> Stashed changes
 
 ```
 git reset --soft <commit-hash>  
 git commit -m" ......"  
 git push --force
 ```
+
+# Vs code
+
+[VS Code 中文乱码及编码格式问题全解-阿里云开发者社区 (aliyun.com)](https://developer.aliyun.com/article/1482210)
